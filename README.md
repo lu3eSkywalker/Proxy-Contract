@@ -6,6 +6,8 @@ implementing proxy contracts from openzepplin and using EIP-1967 spec.
 We then, also make a simple ETH Staking smart contract and leave a bug in it and then upgrade the implementation using proxy contract.
 
 ---
+<br />
+
 
 #### 01 Basic Proxy Contract: 
 Simple implementation of a proxy contract using the delegatecall opcode in Solidity.
@@ -17,16 +19,22 @@ Simple implementation of a proxy contract using the delegatecall opcode in Solid
 In this contract, we utilize a fallback function. Instead of writing functions directly in the proxy contract, all the logic resides in the implementation contract.
 
 ---
+<br />
+
 
 #### 03 Inheriting From OpenZeppelin Lib
 In this contract, We Inherit the proxy contract from Openzeppelin contracts library.
 
 ---
+<br />
+
 
 #### 04 Implementing EIP-1967
 In this contract, We Inherit the proxy contract from Openzeppelin contracts library and implement the EIP-1967 spec.
 
 ---
+<br />
+
 
 #### 05 Simple Staking Contract:
 Simple staking contract system with an upgradeable proxy pattern.
