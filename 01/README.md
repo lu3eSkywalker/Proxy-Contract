@@ -1,66 +1,31 @@
-## Foundry
+# Proxy Contract - Simple Delegate Call
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Overview
+This repository contains a simple implementation of a proxy contract using the `delegatecall` opcode in Solidity.  
+The primary objective of this contract is to separate the **logic** (implementation contract) from the **data** (stored in the proxy contract).
 
-Foundry consists of:
+---
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Contracts Overview
+### 1. DelegateCall (Proxy Contract)
+This contract acts as a proxy that:
 
-## Documentation
+- Delegates function calls to an implementation contract using `delegatecall`.
+- Stores state variables (`num`, `implementation`, `owner`).
+- Provides functionality to change the implementation address, ensuring upgradeability.
+- 
+---
 
-https://book.getfoundry.sh/
+### 2. ImplementationV1
+This is the **initial version** of the implementation contract, containing:
 
-## Usage
+- A single state variable `num`.
+- A function `setNum(uint _num)` to set the value of `num`.
 
-### Build
+---
 
-```shell
-$ forge build
-```
+### 3. ImplementationV2
+This is an **upgraded version** of the implementation contract with modified logic:
 
-### Test
-
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+- A single state variable `num`.
+- A function `setNum(uint _num)` that sets `num` to **twice the input value**.
