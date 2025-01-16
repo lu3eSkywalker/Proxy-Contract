@@ -32,4 +32,4 @@ This is an **upgraded version** of the implementation contract with modified log
 
 - A single state variable `num`.
 - A function `setNum(uint _num)` that sets `num` to **twice the input value**.
-- Another function `multiplyNum` that sets `num` to **twice the input value**.
+- Another function `multiplyNum` that sets `num` to **five times the input value**.
