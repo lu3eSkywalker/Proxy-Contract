@@ -1,66 +1,35 @@
-## Foundry
+# Proxy Contract
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Approach
 
-Foundry consists of:
+In this contract, we utilize a **fallback function**. Instead of writing functions directly in the proxy contract, all the logic resides in the implementation contract.  
+The proxy contract is only responsible for **storage** and **delegatecall**.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+---
 
-## Documentation
 
-https://book.getfoundry.sh/
+## Contracts Overview
 
-## Usage
+### 1. DelegateCall (Proxy Contract)
+This contract acts as a proxy that:
 
-### Build
+- Delegates function calls to an implementation contract using `delegatecall`.
+- Stores state variables (`num`, `implementation`, `owner`).
+- Provides functionality to change the implementation address, ensuring upgradeability.
 
-```shell
-$ forge build
-```
+  ---
 
-### Test
+### 2. ImplementationV1
+This is the **initial version** of the implementation contract, containing:
 
-```shell
-$ forge test
-```
+- A single state variable `num`.
+- A function `setNum(uint _num)` to set the value of `num`.
 
-### Format
+---
 
-```shell
-$ forge fmt
-```
+### 3. ImplementationV2
+This is an **upgraded version** of the implementation contract with modified logic:
 
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+- A single state variable `num`.
+- A function `setNum(uint _num)` that sets `num` to **twice the input value**.
+- Another function `multiplyNum` that sets `num` to **twice the input value**.
