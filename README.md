@@ -10,6 +10,9 @@ We then, also make a simple ETH Staking smart contract and leave a bug in it and
 #### 01 Basic Proxy Contract: 
 Simple implementation of a proxy contract using the delegatecall opcode in Solidity.
 
+<br />
+<br />
+
 ---
 
 #### 02 Using Fallback Function:
